@@ -6,7 +6,7 @@ namespace Ejerc_Consola
     {
         static void Main(string[] args)
         {
-            Ej05();
+            Ej06();
         }
 
         public static void Ej01()
@@ -61,7 +61,8 @@ namespace Ejerc_Consola
             while (programa)
             {
                 Console.WriteLine("\nEl programa se cerrará solo si pulsa las tecla 'Ctrl' y 'F' juntas");
-                if (Console.ReadKey().Key == ConsoleKey.F && Console.ReadKey().Modifiers == ConsoleModifiers.Control)
+                ConsoleKeyInfo tecla = Console.ReadKey();
+                if (tecla.Key == ConsoleKey.F && tecla.Modifiers == ConsoleModifiers.Control)
                 {
                     programa = false;
                 }
