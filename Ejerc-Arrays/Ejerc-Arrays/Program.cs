@@ -69,5 +69,29 @@ namespace Ejerc_Arrays
             string salida = new string (palabraInv.ToArray());
             Console.WriteLine(String.Join("", salida));
         }
+
+        public static void Ej43()
+        {
+            //43. Solicite el ingreso de una serie de números hasta que el usuario ingrese -1. Luego presentar: el máximo, el mínimo, el promedio, la suma.
+            //Realizar todos los cálculos una vez finalizado el ingreso. 
+            Console.WriteLine("Ingrese una serie de números se termina cuando ingresa -1");
+            bool ingresando = true;
+            List<int> numeros = new List<int>();
+            do
+            {
+                if (!int.TryParse(Console.ReadLine(), out int numero))
+                {
+                    Console.WriteLine("Usted no ingresó un número");
+                    continue;
+                }
+
+                else if (numero == -1)
+                    ingresando = false;
+
+                numeros.Add(numero);
+            } while (ingresando);
+
+            Console.WriteLine($"El máximo: {numeros.Max()}")
+        }
     }
 }
