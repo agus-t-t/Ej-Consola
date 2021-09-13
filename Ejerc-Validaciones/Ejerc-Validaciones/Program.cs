@@ -77,17 +77,24 @@ namespace Ejerc_Validaciones
         public static void Ej38()
         {
             //38. Solicitar el ingreso de una serie de números al usuario, donde cada número de la serie debe ser mayor al anterior. 
-                Console.WriteLine("Ingrese una serie de numeros, donde cada número debe ser siguiente al anterior. Pulse 'X' para finalizar el ingreso");
-                bool ingresando = true;
-                List<int> serie = new List<int>();
+            Console.WriteLine("Ingrese una serie de numeros, donde cada número debe ser siguiente al anterior. Pulse 'X' para finalizar el ingreso");
+            bool ingresando = true;
+            List<int> serie = new List<int>();
 
-                do
-                {
-                    Console.WriteLine("Ingrese un número");
-                    string ingreso = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Ingrese un número");
+                string ingreso = Console.ReadLine();
 
                 if (ingreso.ToUpper() == "X")
+                {
+                    Console.WriteLine("\nLos números ingresados fueron:");
+                    foreach (int numerito in serie)
+                    {
+                        Console.WriteLine(numerito);
+                    }
                     ingresando = false;
+                }
 
                 else if (!int.TryParse(ingreso, out int numero))
                 {
@@ -104,14 +111,12 @@ namespace Ejerc_Validaciones
                     continue;
                 }
 
-                serie.Add(numero);
-
-                foreach(numerito in serie)
+                else
                 {
-                    Console.WriteLine(numero);
+                    serie.Add(numero);
                 }
-                        
-                } while (ingresando);
+
+            } while (ingresando);
         }
 
     }
