@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ejerc_Arrays
 {
@@ -7,7 +8,7 @@ namespace Ejerc_Arrays
     {
         static void Main(string[] args)
         {
-            Ej42();
+            Ej43();
         }
 
         public static void Ej39()
@@ -86,12 +87,72 @@ namespace Ejerc_Arrays
                 }
 
                 else if (numero == -1)
+                {
                     ingresando = false;
+                    break;
+                }
+                    
 
                 numeros.Add(numero);
             } while (ingresando);
 
-            Console.WriteLine($"El máximo: {numeros.Max()}")
+            if (numeros.Count() > 0)
+            {
+                int suma = 0;
+
+                foreach (int numero in numeros)
+                {
+                    suma += numero;
+                }
+
+                int promedio = suma / numeros.Count();
+
+                Console.WriteLine($"El máximo: {numeros.Max()}\n" +
+                    $"El mínimo: {numeros.Min()}\n" +
+                    $"El promedio: {promedio}\n" +
+                    $"La suma: {suma}");
+            }
+
+            else
+            {
+                Console.WriteLine("No se ingresaron números a la serie");
+            }
+
+        }
+
+        public static void Ej45()
+        {
+            //45. Realizar una aplicación que solicite el ingreso de una serie de números de registro y nombres de alumno, hasta que el usuario ingrese el registro “0”.
+            bool ingresando = true;
+            IDictionary<int, string> registros = new Dictionary<int, string>();
+            do
+            {
+                Console.WriteLine("Ingrese un número de registro su nombre asociado. Hágalo hasta ingresar un '0'. Ingrese el número de registro y el nombre separados por un espacio");
+
+                string ingreso = Console.ReadLine();
+
+                if (ingreso == "0")
+                {
+                    ingresando = false;
+                    break;
+                }
+
+                string[] items = ingreso.Split(' ');
+
+                if(items.Length != 2)
+                {
+                    Console.WriteLine("No ingresó los datos correctamente");
+                    continue;
+                }
+
+                else if (!int.TryParse(items[0], out int registro)){
+                    Console.WriteLine("No ingresó los datos correctamente");
+                    continue;
+                }
+
+                registros.Add(registro, items[1]);
+
+            } while (ingresando);
         }
     }
 }
